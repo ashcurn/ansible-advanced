@@ -12,14 +12,9 @@
     enabled: yes
 
 - name: Check if Postgresql is initilized
-  stat:
-    path: /var/lib/pgsql/data/PG_VERSION
-  register: postgresDB
-
-- block:
-  - name: Initilize Postgresql
-    command: postgresql-setup initdb
-  when: postgresDB.stat.exists != true
+  shell: postgresql-setup initdb
+  args:
+    creates: /var/lib/pgsql/data/PG_VERSION
 
 - name: Start Postgresql
   service:
