@@ -1,11 +1,6 @@
 ---
 # tasks file for haproxy
 
-- name: http
-  package:
-    name: httpie
-    state: latest
-
 - name: Install HAProxy
   yum:
     name=haproxy state=latest
