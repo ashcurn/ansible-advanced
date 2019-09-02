@@ -1,0 +1,9 @@
+---
+
+- name: Deploy HAPRoxy
+  hosts: frontends
+  gather_facts: false
+  become: true
+
+  roles:
+    - haproxy
