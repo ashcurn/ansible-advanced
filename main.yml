@@ -1,12 +1,19 @@
 ---
 
+- name: Ensure pre-requisits
+  hosts: all
+  gather_facts: false
+  become: true
+
+  roles:
+  - prereq
+
 - name: Deploy HAProxy
   hosts: frontends
   gather_facts: false
   become: true
 
   roles:
-    - prereq
     - haproxy
 
 - name: Deploy application
