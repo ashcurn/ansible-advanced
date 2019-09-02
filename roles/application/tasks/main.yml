@@ -26,18 +26,3 @@
   service:
     name: tomcat
     state: started
-
-- name: Install Apahce
-  yum:
-    name: httpd
-    state: latest
-     
-- name: Enable Apache at boot
-  service:
-    name: httpd
-    enabled: yes
-
-- name: Start Apache
-  service:
-    name: httpd
-    state: started
