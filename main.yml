@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure pre-requisits
+- name: Ensure pre-reqs
   hosts: all
   gather_facts: false
   become: true
