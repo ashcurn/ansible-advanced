@@ -1,6 +1,6 @@
 ---
 
-- name: Deploy HAPRoxy
+- name: Deploy HAProxy
   hosts: frontends
   gather_facts: false
   become: true
