@@ -6,4 +6,5 @@
   become: true
 
   roles:
+    - prereq
     - haproxy
