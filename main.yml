@@ -1,14 +1,5 @@
 ---
 
-- name: test Facst
-  hosts: all
-  tasks:
-    - name:
-      debug:
-        var: hostvars[host]
-      tags:
-        - test
-
 - name: Ensure pre-reqs
   hosts: all
   gather_facts: false
