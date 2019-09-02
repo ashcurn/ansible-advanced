@@ -23,3 +23,11 @@
 
   roles:
     - application
+
+- name: Deploy Postgresql
+  host: appsdb
+  gather_facts: false
+  become: true
+
+  roles:
+    - postgres

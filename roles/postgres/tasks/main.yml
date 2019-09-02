@@ -1,2 +1,27 @@
 ---
 # tasks file for postgres
+
+- name: Install Postgresql
+  yum:
+    name: postgresql-server
+    state: latest
+
+- name: Enable Postgresql at boot
+  service:
+    name: postgresql
+    enabled: yes
+
+- name: Check if Postgresql is initilized
+  stat:
+    path: /var/lib/pgsql/data/PG_VERSION
+  register: postgresDB
+
+- block:
+  - name: Initilize Postgresql
+    command: postgresql-setup initdb
+  when: postgresDB.stat.exists !== true
+
+- name: Start Postgresql
+  service:
+    name: postgresql.service
+    state: started
