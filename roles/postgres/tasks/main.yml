@@ -19,7 +19,7 @@
 - block:
   - name: Initilize Postgresql
     command: postgresql-setup initdb
-  when: postgresDB.stat.exists !== true
+  when: postgresDB.stat.exists != true
 
 - name: Start Postgresql
   service:
