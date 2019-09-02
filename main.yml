@@ -8,3 +8,11 @@
   roles:
     - prereq
     - haproxy
+
+- name: Deploy application
+  hosts: apps
+  gather_facts: false
+  become: true
+
+  roles:
+    - application
