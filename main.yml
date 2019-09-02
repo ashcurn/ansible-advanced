@@ -25,7 +25,7 @@
     - application
 
 - name: Deploy Postgresql
-  hosts: appsdb
+  hosts: appdbs
   gather_facts: false
   become: true
 
