@@ -38,21 +38,22 @@
    
 # - name: Show "{{ item.0.name }}" public IP
 #   debug: var=instancefloatingip.floating_ip.floating_ip_address
-# - name: Wait for "{{ item.0.name }}" to be available
-#   wait_for:
-#     host: "{{ item.interface_ip }}"
-#     port: 22
-#     search_regex: OpenSSH
-#     timeout: 600
-#   delegate_to: "{{ inventory_hostname }}"
-#   with_items: 
-#   - "{{ openstack_servers}}"
 
 - name: Fetch Instance Info
   os_server_facts:
     cloud: ospcloud
     region_name: RegionOne
   register: r_os_servers
+
+- name: Wait for server to be available
+  wait_for:
+    host: "{{ item.public_v4 }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+  delegate_to: "{{ inventory_hostname }}"
+  with_items: 
+  - "{{ r_os_servers.ansible_facts.openstack_servers}}"
 
 - name: Add host
   add_host:
