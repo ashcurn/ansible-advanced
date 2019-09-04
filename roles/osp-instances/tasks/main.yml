@@ -45,6 +45,8 @@
     search_regex: OpenSSH
     timeout: 600
   delegate_to: "{{ inventory_hostname }}"
+  with_items: 
+  - "{{ openstack_servers}}"
 
 - name: Fetch Instance Info
   os_server_facts:
