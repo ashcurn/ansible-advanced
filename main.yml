@@ -1,18 +1,21 @@
 ---
+- name: Provision Environment
+  hosts: jumpbox
+  roles:
+    - osp-security
+    - osp-instances
 
 - name: Ensure pre-reqs
   hosts: all
   gather_facts: false
   become: true
-
   roles:
   - prereq
 
 - name: Deploy HAProxy
-  hosts: frontends
+  hosts: frontend
   gather_facts: false
   become: true
-
   roles:
     - haproxy
 
@@ -20,7 +23,6 @@
   hosts: apps
   gather_facts: false
   become: true
-
   roles:
     - application
 
@@ -28,6 +30,5 @@
   hosts: appdbs
   gather_facts: false
   become: true
-
   roles:
     - postgres
