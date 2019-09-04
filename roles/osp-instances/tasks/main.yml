@@ -38,13 +38,13 @@
    
 # - name: Show "{{ item.0.name }}" public IP
 #   debug: var=instancefloatingip.floating_ip.floating_ip_address
-# - name: Wait for "{{ item.0.name }}" to be available
-#   wait_for:
-#     host: "{{ instancefloatingip.floating_ip.floating_ip_address }}"
-#     port: 22
-#     search_regex: OpenSSH
-#     timeout: 600
-#   delegate_to: "{{ inventory_hostname }}"
+- name: Wait for "{{ item.0.name }}" to be available
+  wait_for:
+    host: "{{ item.0.name }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+  delegate_to: "{{ inventory_hostname }}"
 
 - name: Fetch Instance Info
   os_server_facts:
