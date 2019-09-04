@@ -40,7 +40,7 @@
 #   debug: var=instancefloatingip.floating_ip.floating_ip_address
 - name: Wait for "{{ item.0.name }}" to be available
   wait_for:
-    host: "{{ item.0.name }}"
+    host: "{{ item.interface_ip }}"
     port: 22
     search_regex: OpenSSH
     timeout: 600
