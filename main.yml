@@ -4,7 +4,7 @@
   roles:
     - osp-security
     - osp-instances
-
+# NOTE Remove Provision from here, make it a separate playbook. Include gather facts instead to get the dynamic hosts correctly.
 - name: Ensure pre-reqs
   hosts: all
   gather_facts: false
