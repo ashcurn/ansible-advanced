@@ -35,9 +35,6 @@
     timeout: 180
   register: instancefloatingip
   with_dict: "{{osp_servers}}"
-   
-# - name: Show "{{ item.0.name }}" public IP
-#   debug: var=instancefloatingip.floating_ip.floating_ip_address
 
 - name: Fetch Instance Info
   os_server_facts:

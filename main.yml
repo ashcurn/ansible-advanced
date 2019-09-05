@@ -1,10 +1,9 @@
 ---
-- name: Provision Environment
+- name: Build Inventory
   hosts: jumpbox
   roles:
-    - osp-security
-    - osp-instances
-# NOTE Remove Provision from here, make it a separate playbook. Include gather facts instead to get the dynamic hosts correctly.
+    - osp-facts
+
 - name: Ensure pre-reqs
   hosts: all
   gather_facts: false
